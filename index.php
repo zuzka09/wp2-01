@@ -26,6 +26,19 @@ $conversion = filter_input(INPUT_POST, "prevod");
     } else {
     ?>
     
+    <?php
+    if (isset($value) && isset($conversion)) {
+        
+        if ($conversion == "usd_czk") {
+            echo "$value $ je " . $value * 21 . " CZK"; 
+        }   
+    
+        if ($conversion == "czk_usd") {
+            echo "$value CZK je " . $value / 21 . " €";
+        }
+    } else {
+    ?>
+
     <form action="" method="post">
     <h3>Částka</h3>    
         <input type="number" name="castka" id="castka">
@@ -42,6 +55,14 @@ $conversion = filter_input(INPUT_POST, "prevod");
             <label for="czk_eur">CZK -> EUR</label>
     
     <br></br>
+
+    <input typ="radio" name="prevod2" id="usd_czk" value="usd_czk">
+            <label for="usd_czk">USD -> CZK</label>
+
+    <br></br>
+
+    <input typ="radio" name="prevod2" id="czk_usd" value="czk_usd">
+            <label for="czk_usd">CZK -> USD</label> 
 
 <input type="submit" value="Převést">
     </form>
